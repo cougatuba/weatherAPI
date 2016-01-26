@@ -3,14 +3,14 @@ body{
 }
 
 #left{
-  width:100px;
+  width:200px;
   float:left;
   margin:20px;
   padding:5px;
 }
 
 #right{
-  width:100px;
+  width:200px;
   float:left;
   margin:20px;
   padding:5px;
