@@ -6,13 +6,11 @@ body{
 }
 
 #left{
-  background-color:black;
   width:25%;
   float:left;
 }
 
 #right{
-  background-color:white;
   width:25%;
   float:left;
 }
