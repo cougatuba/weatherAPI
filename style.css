@@ -1,0 +1,17 @@
+body{
+  background-color:#4169e1;
+}
+
+#left{
+  width:100px;
+  float:left;
+  margin:20px;
+  padding:5px;
+}
+
+#right{
+  width:100px;
+  float:left;
+  margin:20px;
+  padding:5px;
+}
