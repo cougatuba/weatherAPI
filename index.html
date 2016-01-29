@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>City Finder</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $( "#cityfield" ).keyup(function() {
+     var url = "https://students.cs.byu.edu/~clement/CS360/ajax/getcity.cgi?q="+$("#cityfield").val();
+     $.getJSON(url,function(data) {
+        var everything;
+        everything = "<ul id='twocols'>";
+        $.each(data, function(i,item) {
+          everything += "<li> "+data[i].city;
+        });
+        everything += "</ul>";
+        $("#txtHint").html(everything);
+      })
+    .done(function() { console.log('getJSON request succeeded!'); })
+    .fail(function(jqXHR, textStatus, errorThrown) { 
+      console.log('getJSON request failed! ' + textStatus); 
+      console.log("incoming "+jqXHR.responseText);
+    })
+    .always(function() { console.log('getJSON request ended!');
+    })
+    .complete(function() { console.log("complete"); });
+    });
+  
+
+  $("#button").click(function(e){
+    var value = $("#cityfield").val();
+    $("#dispcity").text(value);
+    e.preventDefault();
+    var myurl= "https://api.wunderground.com/api/229f1b155c7da1af/geolookup/conditions/q/UT/";
+    myurl += value;
+    myurl += ".json";
+    console.log(myurl);
+    $.ajax({
+      url : myurl,
+      dataType : "jsonp",
+      success : function(parsed_json) {
+        var location = parsed_json['location']['city'];
+        var temp_string = parsed_json['current_observation']['temperature_string'];
+        var current_weather = parsed_json['current_observation']['weather'];
+		var wind = parsed_json['current_observation']['wind_mph'];
+		var icon = parsed_json['current_observation']['icon_url'];
+        everything = "<ul>";
+        everything += "<li>Location: "+location;
+        everything += "<li>Temperature: "+temp_string;
+        everything += "<li>Weather: "+current_weather;
+		everything += "<li>Wind Speed: "+wind;
+        everything += "</ul>";
+        $("#weather").html(everything);
+      }
+    });
+  });
+});
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+<div id="wrapper">
+  <div id="banner">
+    <div id="content">
+	<img src="cloud.png" alt="weather art" style="width:100px; float:left;">
+     <h1>Utah Weather Tracker</h1>
+	</div>
+  </div>
+  <div id="left">
+    <div id="box">
+      <form>
+      <p>Enter A Utah City:</p>
+      <input type="text" id="cityfield" value="" autocomplete="off"><br>
+      <br>
+      <input id="button" type="submit" value="Submit">
+    </div>
+    <div id="box">
+      <p align:center>Suggestion:</p> <span id="txtHint">Empty</span>
+      </form>
+    </div>
+  </div>
+  
+  <div id="right">
+    <p>City</p>
+    <textarea id="dispcity">No City</textarea>
+    <p>Current Weather</p>
+    <div id="weather">No weather</div>
+  </div>
+</div>
+</body>
+</html>

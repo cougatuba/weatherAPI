@@ -1,16 +1,78 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
 body{
-  width:100%;
+  width:90%;
   margin:5px;
-  padding:20px;
-  background-color:#4169e1;
+  padding:10px;
+  background-color:white;
+  font-family: 'Lato', sans-serif; 
+  align:center;
+}
+
+#banner{
+  width:90%%;
+  margin:0px;
+  padding:10px;
+  background-color:#72C05C;
+  border-bottom-color:white;
+  border-bottom-style: solid;
+}
+
+#content{
+	position:relative;
+	overflow:auto;
+	z-index:0;
+}
+
+#wrapper{
+  width:90%;
+  margin:0 auto;
+  padding:0;
+  position:left;
+  float:left;
+  background-color:#69C0FC;
+  height:555px;
+}
+
+#box{
+  background-color:#69C0FC;
+  border:2px;
+  width:45%;
+  float:left;
+  margin:0 auto;
+  padding:5px;
 }
 
 #left{
-  width:25%;
+  background-color:#69C0FC;
+  border:2px;
+  width:45%;
+  height:76%;
   float:left;
+  margin:0 auto;
+  padding:5px;
+  border-right-color:white;
+  border-right-style:solid;
+  border-right-width:5px;
 }
 
+
 #right{
-  width:25%;
+  background-color:#69C0FC;
+  border:2px;
+  width:45%;
+  height:76%;
   float:left;
+  margin:0 auto;
+  padding:5px;
+  padding-left:20px;
+}
+
+
+#twocols{
+  columns:2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style-type: none;
+  padding:0;
+  margin:0;
 }
